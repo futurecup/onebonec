@@ -160,27 +160,6 @@
             line-height: 1.6;
         }
 
-        /* Screenshots Placeholder */
-        .screenshots {
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        .screenshot-placeholder {
-            background: #e5e5ea;
-            border: 2px dashed #d1d1d6;
-            border-radius: 16px;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            flex-direction: column;
-        }
-
         /* About Section */
         .about {
             background: var(--card-bg);
@@ -321,23 +300,6 @@
         </div>
     </section>
 
-    <!-- Screenshots Placeholder -->
-    <section class="screenshots container">
-        <div class="section-title">
-            <span data-lang="en">App Preview</span>
-            <span data-lang="zh" style="display: none;">应用预览</span>
-        </div>
-        
-        <div class="screenshot-placeholder">
-            <span data-lang="en">[ App Screenshots will be displayed here soon ]</span>
-            <span data-lang="zh" style="display: none;">[ 应用截图即将在此展示 ]</span>
-            <p style="color: #86868B; font-size: 0.9rem; margin-top: 10px;">
-                <span data-lang="en">Experience the seamless interface designed for you.</span>
-                <span data-lang="zh" style="display: none;">体验为您打造的无缝界面。</span>
-            </p>
-        </div>
-    </section>
-
     <!-- About Us -->
     <section class="about container">
         <div class="section-title">
@@ -389,9 +351,6 @@
             if (currentLang === 'en') {
                 // Switch to Chinese
                 enElements.forEach(el => el.style.display = 'none');
-                zhElements.forEach(el => el.style.display = 'block'); // Or 'inline' depending on context, but block/flex handled by parent usually. 
-                // Fix for inline elements like spans inside flex containers if needed, but generally block works for these divs.
-                // Re-fixing specific display types for inline elements if they were broken:
                 zhElements.forEach(el => {
                     if(el.tagName === 'SPAN' && el.parentElement.style.display !== 'flex') {
                          el.style.display = 'inline';
@@ -399,7 +358,6 @@
                          el.style.display = 'block';
                     }
                 });
-                
                 langLabel.textContent = 'EN';
                 currentLang = 'zh';
             } else {
@@ -412,7 +370,6 @@
                         el.style.display = 'block';
                     }
                 });
-                
                 langLabel.textContent = '中文';
                 currentLang = 'en';
             }
