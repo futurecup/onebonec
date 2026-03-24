@@ -1,1 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Care - China, Made Easy</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --bg-color: #F5F5F7;
+            --text-main: #1D1D1F;
+            --text-secondary: #86868B;
+            --card-bg: #FFFFFF;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation / Lang Switcher */
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 40px;
+            position: absolute;
+            width: 100%;
+            box-sizing: border-box;
+            top: 0;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #d1d1d6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Container */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: var(--card-bg);
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0 0 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .slogan-main {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .slogan-sub {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            background-color: #0062cc;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Screenshots Placeholder */
+        .screenshots {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .screenshot-placeholder {
+            background: #e5e5ea;
+            border: 2px dashed #d1d1d6;
+            border-radius: 16px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            flex-direction: column;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--card-bg);
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 24px;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid #e5e5ea;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Language Visibility Logic */
+        [data-lang] {
+            display: none;
+        }
+        [data-lang="en"] {
+            display: block;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .nav-bar { justify-content: center; padding: 15px; }
+            h1 { font-size: 2.5rem; }
+            .slogan-main { font-size: 1.4rem; }
+            .slogan-sub { font-size: 1.1rem; }
+            .btn-download { width: 90%; padding: 14px 0; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Switcher -->
+    <div class="nav-bar">
+        <button class="lang-btn" onclick="toggleLanguage()">🌐 <span id="lang-label">中文</span></button>
+    </div>
+
+    <!-- Header / Hero -->
+    <header>
+        <div class="container">
+            <h1>Panda Care</h1>
+            
+            <!-- English Content -->
+            <div data-lang="en">
+                <span class="slogan-main">China, Made Easy.</span>
+                <p class="slogan-sub">Discover nearby dining, stays, and healthcare with a seamless English experience.</p>
+                <a href="https://www.apple.com/app-store/" target="_blank" class="btn-download">Download on the App Store</a>
+                <p style="font-size: 0.8rem; color: #86868B; margin-top: 15px;">Coming Soon to iOS</p>
+            </div>
+
+            <!-- Chinese Content -->
+            <div data-lang="zh" style="display: none;">
+                <span class="slogan-main">中国生活，轻松搞定。</span>
+                <p class="slogan-sub">探索周边的餐饮、住宿和医疗服务，享受无缝的英文体验。</p>
+                <a href="https://www.apple.com/app-store/" target="_blank" class="btn-download">前往 App Store 下载</a>
+                <p style="font-size: 0.8rem; color: #86868B; margin-top: 15px;">即将登陆 iOS</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Core Features -->
+    <section class="features container">
+        <div class="section-title">
+            <span data-lang="en">Why Panda Care?</span>
+            <span data-lang="zh" style="display: none;">为什么选择 Panda Care？</span>
+        </div>
+        
+        <div class="feature-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <span class="feature-icon">📍</span>
+                
+                <div data-lang="en">
+                    <div class="feature-title">English-Friendly POIs</div>
+                    <div class="feature-desc">
+                        Discover nearby restaurants, hospitals, hotels, and more that specifically cater to English speakers. No more language barriers.
+                    </div>
+                </div>
+
+                <div data-lang="zh" style="display: none;">
+                    <div class="feature-title">发现周边英文友好地点</div>
+                    <div class="feature-desc">
+                        轻松找到附近的餐厅、医院、酒店等专为英语使用者服务的场所。从此告别语言障碍。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <span class="feature-icon">🛂</span>
+
+                <div data-lang="en">
+                    <div class="feature-title">Immigration Consultation</div>
+                    <div class="feature-desc">
+                        Get direct online policy consultation regarding immigration, visas, and residency rules in China. Stay compliant and informed.
+                    </div>
+                </div>
+
+                <div data-lang="zh" style="display: none;">
+                    <div class="feature-title">移民局政策在线咨询</div>
+                    <div class="feature-desc">
+                        直接在线获取关于中国移民、签证和居留政策的咨询。让您时刻合规，信息畅通。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Placeholder -->
+    <section class="screenshots container">
+        <div class="section-title">
+            <span data-lang="en">App Preview</span>
+            <span data-lang="zh" style="display: none;">应用预览</span>
+        </div>
+        
+        <div class="screenshot-placeholder">
+            <span data-lang="en">[ App Screenshots will be displayed here soon ]</span>
+            <span data-lang="zh" style="display: none;">[ 应用截图即将在此展示 ]</span>
+            <p style="color: #86868B; font-size: 0.9rem; margin-top: 10px;">
+                <span data-lang="en">Experience the seamless interface designed for you.</span>
+                <span data-lang="zh" style="display: none;">体验为您打造的无缝界面。</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about container">
+        <div class="section-title">
+            <span data-lang="en">About Us</span>
+            <span data-lang="zh" style="display: none;">关于我们</span>
+        </div>
+        
+        <div data-lang="en">
+            <p>
+                Our vision is to help foreigners settling in China live better. 
+                We bridge the gap between local services and international residents through technology and care.
+            </p>
+        </div>
+
+        <div data-lang="zh" style="display: none;">
+            <p>
+                我们的愿景是帮助定居中国的外国人生活得更好。
+                我们通过科技与关怀，架起本地服务与国际居民之间的桥梁。
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Tian / OneBone Tech. All rights reserved.</p>
+            <p>
+                <a href="https://futurecup.github.io/Assets/pandacare/privacypolicy/">
+                    <span data-lang="en">Privacy Policy</span>
+                    <span data-lang="zh" style="display: none;">隐私政策</span>
+                </a>
+                | 
+                <a href="mailto:onebonectech@icloud.com">
+                    <span data-lang="en">Contact Support</span>
+                    <span data-lang="zh" style="display: none;">联系支持</span>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en'; // Default to English
+
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('[data-lang="en"]');
+            const zhElements = document.querySelectorAll('[data-lang="zh"]');
+            const langLabel = document.getElementById('lang-label');
+
+            if (currentLang === 'en') {
+                // Switch to Chinese
+                enElements.forEach(el => el.style.display = 'none');
+                zhElements.forEach(el => el.style.display = 'block'); // Or 'inline' depending on context, but block/flex handled by parent usually. 
+                // Fix for inline elements like spans inside flex containers if needed, but generally block works for these divs.
+                // Re-fixing specific display types for inline elements if they were broken:
+                zhElements.forEach(el => {
+                    if(el.tagName === 'SPAN' && el.parentElement.style.display !== 'flex') {
+                         el.style.display = 'inline';
+                    } else {
+                         el.style.display = 'block';
+                    }
+                });
+                
+                langLabel.textContent = 'EN';
+                currentLang = 'zh';
+            } else {
+                // Switch to English
+                zhElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => {
+                    if(el.tagName === 'SPAN') {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                
+                langLabel.textContent = '中文';
+                currentLang = 'en';
+            }
+        }
+    </script>
+</body>
+</html>
